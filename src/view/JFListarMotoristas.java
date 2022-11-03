@@ -43,7 +43,7 @@ public class JFListarMotoristas extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Gadugi", 1, 36)); // NOI18N
-        jLabel1.setText("Listar Motoras");
+        jLabel1.setText("Listar Motorista");
 
         jTMotorista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -70,7 +70,7 @@ public class JFListarMotoristas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
                 .addComponent(jLabel1)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
