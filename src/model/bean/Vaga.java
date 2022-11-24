@@ -7,45 +7,64 @@ package model.bean;
 
 /**
  *
- * @author 04031966040
+ * @author amanda
  */
-public class Vaga {
+  public class Vaga {
     private int idVaga;
     private int numero;
     private String rua;
     private boolean obliqua;
 
+    
+    
     public int getIdVaga() {
-        return idVaga;
+    return idVaga;
     }
 
+    
+    
     public void setIdVaga(int idVaga) {
-        this.idVaga = idVaga;
+    this.idVaga = idVaga;
     }
 
+    
+    
+    
     public int getNumero() {
-        return numero;
+    return numero;
     }
 
+    
+    
+    
     public void setNumero(int numero) {
-        this.numero = numero;
+    this.numero = numero;
     }
+    
+    
+    
 
     public String getRua() {
-        return rua;
+    return rua;
     }
 
+    
+    
     public void setRua(String rua) {
-        this.rua = rua;
+    this.rua = rua;
     }
+    
+    
+    
 
     public boolean isObliqua() {
-        return obliqua;
+    return obliqua;
     }
+    
+    
+    
 
     public void setObliqua(boolean obliquo) {
-        this.obliqua = obliquo;
-    }
-    
-    
+    this.obliqua = obliquo;
+    }   
 }

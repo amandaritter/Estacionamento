@@ -100,23 +100,22 @@ public class JFListarVaga extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jBtnSalvar)
                         .addGap(41, 41, 41)
                         .addComponent(jBtnEditar)
                         .addGap(38, 38, 38)
-                        .addComponent(jBtnExcluir)))
+                        .addComponent(jBtnExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -134,6 +133,17 @@ public class JFListarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        if (jTVaga.getSelectedRow() != -1) {
+            int vagaSelecionada = (int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0);
+            JFAtualizarVaga av = new JFAtualizarVaga(vagaSelecionada);
+            av.setVisible(true);
+            System.out.println(vagaSelecionada);
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "ERRO", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        readJTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
@@ -144,18 +154,21 @@ public class JFListarVaga extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-     if (jTVaga.getSelectedRow() != -1){
-         int opcao = JOptionPane.showConfirmDialog (null, "Deseja exluir vaga selecionada?", "Exclusão", JOptionPane.YES_NO_OPTION);
-         if (opcao == 0) {
-             VagaDAO dao = new VagaDAO();
-             Vaga v = new Vaga();
-             v.setIdVaga((int) jTVaga.getValueAt(jTVaga.getSelectedRow(), 0));
-             dao.delete(v);
-         }
-     }else {
-         JOptionPane.showMessageDialog (null, "Selecione uma vaga!", "Erro", JOptionPane.ERROR_MESSAGE);
-     }
-     readJTable();
+        if (jTVaga.getSelectedRow() != -1) {
+            int opcao = JOptionPane.showConfirmDialog(null,
+                    "Deseja excluir a vaga selecionada?", "Exclusão", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0) {
+                VagaDAO dao = new VagaDAO();
+                Vaga v = new Vaga();
+                v.setIdVaga((int)jTVaga.getValueAt(jTVaga.getSelectedRow(), 0));
+                dao.delete(v);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma vaga!", "Erro", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        readJTable();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBtnExcluirActionPerformed
     public void readJTable() {
         DefaultTableModel modelo = (DefaultTableModel) jTVaga.getModel();
